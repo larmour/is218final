@@ -3,7 +3,7 @@
 //if logged in redirect to members page
 if( $user->is_logged_in() ){ header('Location: memberpage.php'); } 
 
-$stmt = $db->prepare('SELECT resetToken, resetComplete FROM members WHERE resetToken = :token');
+$stmt = $dbs->prepare('SELECT resetToken, resetComplete FROM members WHERE resetToken = :token');
 $stmt->execute(array(':token' => $_GET['key']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -38,7 +38,7 @@ if(isset($_POST['submit'])){
 
 		try {
 
-			$stmt = $db->prepare("UPDATE members SET password = :hashedpassword, resetComplete = 'Yes'  WHERE resetToken = :token");
+			$stmt = $dbs->prepare("UPDATE members SET password = :hashedpassword, resetComplete = 'Yes'  WHERE resetToken = :token");
 			$stmt->execute(array(
 				':hashedpassword' => $hashedpassword,
 				':token' => $row['resetToken']
