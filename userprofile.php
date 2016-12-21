@@ -15,88 +15,57 @@ require('layout/header.php');
 
 ?>
 
-<div class="container">
+<div id="wrapper">
 
 	<div class="row">
 
 	    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 			
-				<h2> Welcome <?php echo $_SESSION['username']; ?><h>
-				<p><a href='logout.php'>Logout</a></p>
-        <p><a href='memberpage.php'> Members page</a></p>
-				<hr>
+				<h2> <?php echo $_SESSION['username']; ?>`s Profile </h2>
+        <div id="menu">
+          <ul>
+            <li><a href='memberpage.php'>Members Page</a></li>
+            <li><a href='userprofileedit.php'>Edit Profile</a></li>
+            <li><a href='logout.php'>Logout</a></li>
+            
+          </ul>
         </div>
-  <div id="ccontent">
 
-<div class="container">
-  <h1 class="page-header">Edit Your Profile</h1>
-  <div class="row">
-    <!-- left column -->
-    <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="text-center">
-        <img src="http://www.mahsen.net/images/uyeler/e.png" width=100px; height= 100px; class="avatar img-circle img-thumbnail" alt="avatar">
-        <h5>Upload an updated photo</h5>
-        <input type="file" class="text-center center-block well well-sm">
-      </div>
-    </div>
+<?php
+  
+  $con=mysqli_connect("sql1.njit.edu","la95","1uPHeSMbW","la95");
+  // check connection
+  if (mysqli_connect_errno())
+   {
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+   }
+   $user = $_SESSION['username'];
+   //goes into database for specific logged in user 
+   $result = mysqli_query($con, "SELECT * FROM members WHERE username = '$user'");
+  
+
+   
+   while($row = mysqli_fetch_array($result)) 
     
-    
-    
-    
-    <!-- edit form column -->
-      <h3>Personal info</h3>
-      <form class="form-horizontal" role="form">
-        <div class="form-group">
-          <label class="col-lg-3 control-label">First name:</label>
-          <div class="col-lg-8">
-            <input class="form-control" value="" type="text">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-3 control-label">Last name:</label>
-          <div class="col-lg-8">
-            <input class="form-control" value="" type="text">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-3 control-label">Company:</label>
-          <div class="col-lg-8">
-            <input class="form-control" value="" type="text">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-3 control-label">Email:</label>
-          <div class="col-lg-8">
-            <input class="form-control" value="" type="text">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-3 control-label">Time Zone:</label>
-          <div class="col-lg-8">
-            <div class="ui-select">
-              <select id="user_time_zone" class="form-control">
-                <option value="Hawaii">(GMT-10:00) Hawaii</option>
-                <option value="Alaska">(GMT-09:00) Alaska</option>
-                <option value="Pacific Time (US & Canada)">(GMT-08:00) Pacific Time (US & Canada)</option>
-                <option value="Arizona">(GMT-07:00) Arizona</option>
-                <option value="Mountain Time (US & Canada)">(GMT-07:00) Mountain Time (US & Canada)</option>
-                <option value="Central Time (US & Canada)" selected="selected">(GMT-06:00) Central Time (US & Canada)</option>
-                <option value="Eastern Time (US & Canada)">(GMT-05:00) Eastern Time (US & Canada)</option>
-                <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-3 control-label"></label>
-          <div class="col-md-8">
-             // save changes button needs to go to post 
-            <input class="btn btn-primary" value="Save Changes" type="button">
-            <span></span>
-            <input class="btn btn-default" value="Cancel" type="reset">
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
+{
+echo "<br>";
+echo "<br>";
+echo "<br>";
+echo "<img width='150px' height='150px' src='img/avatar.jpg".$row['profilepic']."'>"; 
+echo "<p>Your memberID: "  . $row['memberID'] . "</p>";
+echo "<p>Your username: "  . $row['username'] . "</p>";
+echo "<p>Your email: "  . $row['email'] . "</p>";
+echo "<p> Are you active?  "  . $row['active'] . "</p>";
+
+}
+
+mysqli_close($con);
+  
+?>
+   </div>
 </div>
+
+<?php
+//include footer template
+require('layout/footer.php');
+?>
