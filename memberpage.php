@@ -14,7 +14,7 @@ require('layout/header.php');
 
 <div id="wrapper">
   <div id="header">
-    			
+    		<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">	
 				<h2>Welcome <?php echo $_SESSION['username']; ?> - Look at all our Members</h2>
         <div id="menu">
           <ul>

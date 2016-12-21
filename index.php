@@ -106,11 +106,12 @@ require('layout/header.php');
 ?>
 
 
-<div class="content">
+<div class="wrapper" align="center">
 
-	<div id="main_content">
+	<div id="header">
 
-	    <div class="content">
+	    <div class="main_content" align="center">
+         <div class="form" align="center">
 			<form role="form" method="post" action="" autocomplete="off">
 				<h2>Please Sign Up</h2>
 				<p>Already a member? <a href='login.php'>Login</a></p>
