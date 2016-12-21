@@ -101,6 +101,10 @@ p {
     font-family: Serif;
 }
 
+body {
+   margin-top: 10px;
+
+}
 .color1 {
    background-color: //type in hex;
 }
@@ -114,26 +118,21 @@ p {
 }
 #wrapper {
    width: 960px;
+   height: 88px;
    margin-left: auto;
    margin-right: auto;
-   border: 1px solid;
-
+   
 }
 #header {
-   background-color:#DFF2F6;
+   background-color: #0000FF;
    height: 88px;
    line-height: 86px;
-}
-#logo {
-   background-color: #DFF2F6;
-   width: 367px;
-   float: left;
+
 }
 #menu {
-   width: 562px;
-   float: left;
-   text-align: right;
-   padding-right: 31px;
+   width: 960 px;
+   float: right;
+   
 }
 #menu a{
    font-family: sans-serif;
@@ -142,6 +141,7 @@ p {
 #menu ul {
    margin: 0px;
    padding: 0px;
+   float: right;
 }
 #menu li {
    display: inline;
@@ -179,7 +179,8 @@ p {
 }
 #content {
   height: 593px;
-  margin-top:91px;
+  margin-top: 10px;
+  width: 960px;
 }
 .main_content {
   width: 545px;
@@ -207,7 +208,10 @@ p {
    padding: 5px 5px 5px 5px;
    min-height: 60px;
 }
-
+#row {
+  height: 593px;
+  margin-top:91px;
+}
 
 
 /* ==========================================================================
